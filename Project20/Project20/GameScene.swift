@@ -148,6 +148,8 @@ class GameScene: SKScene {
         let nodesAtPoint = nodes(at: location)
 
         for case let node as SKSpriteNode in nodesAtPoint {
+            guard node.name == "firework" else { continue }
+            
             for parent in fireworks {
                 guard let firework = parent.children.first as? SKSpriteNode else { continue }
 
@@ -156,7 +158,6 @@ class GameScene: SKScene {
                     firework.colorBlendFactor = 1
                 }
             }
-            guard node.name == "firework" else { continue }
             node.name = "selected"
             node.colorBlendFactor = 0
         }
